@@ -1,27 +1,31 @@
 import React from 'react';
-import Admin from './layouts/Admin';
+import AdminLayout from './layouts/Admin';
 import './App.css';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Header from './components/Header';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Typography variant="h6" color="inherit">
-            Admin
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <div className="mainView">
-        <Admin />
-      </div>
-    </React.Fragment>
+    <Router>
+      <React.Fragment>
+        <CssBaseline />
+        <Header />
+        <div className="mainView">
+          <Route exact path="/" component={Home} />
+          <Route path="/admin" component={Admin} />
+        </div>
+      </React.Fragment>
+    </Router>
   );
+}
+
+function Home() {
+  return <h2>Home</h2>
+}
+
+function Admin() {
+  return <AdminLayout />
 }
 
 export default App;
