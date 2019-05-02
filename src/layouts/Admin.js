@@ -16,7 +16,7 @@ class Admin extends React.Component {
       uploadedKey: ''
     }
     this.dialog = React.createRef()
-    console.log(Config.BACKEND)
+    console.log(Config)
   }
 
   doUpload(data) {

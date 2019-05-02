@@ -10,7 +10,6 @@ class AdminPreview extends React.Component {
   constructor(props) {
     super()
     this.props = props
-    console.log(props)
     this.state = {
       images: null
     }
