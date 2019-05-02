@@ -23,7 +23,7 @@ class Home extends React.Component {
                 <Card>
                   <CardHeader
                     action={
-                      <Button>Xem</Button>
+                      <Button color='primary'>Xem</Button>
                     }
                     title={cla.name}
                     subheader={gradeName}
