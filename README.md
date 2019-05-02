@@ -1,8 +1,8 @@
 # TKB CNH - Frontend
 
-Repository chứa mã nguồn frontend của ứng dụng "Thời khóa biểu CNH"
+Repository chứa mã nguồn frontend của project "Thời khóa biểu CNH"
 
-Đây là một project nhắm ứng dụng ReactJS
+Đây là một project nhằm ứng dụng ReactJS vào thực tiễn, để chuẩn bị cho mùa internship 2019
 
 # Tác giả 
 
