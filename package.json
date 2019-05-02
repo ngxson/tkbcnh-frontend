@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
+    "cross-env": "^5.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-file-base64": "^1.0.3",
@@ -13,8 +15,8 @@
     "react-scripts": "3.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env REACT_APP_MODE=debug react-scripts start",
+    "build": "cross-env REACT_APP_MODE=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

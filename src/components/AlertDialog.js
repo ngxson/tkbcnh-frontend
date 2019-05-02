@@ -9,6 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 class AlertDialog extends React.Component {
   state = {
     open: false,
+    onClose: null
   };
 
   show(data) {
@@ -16,14 +17,15 @@ class AlertDialog extends React.Component {
       open: true,
       title: data.title,
       text: data.text,
+      onClose: data.onClose || null
     })
   }
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
   handleClose = () => {
+    if (this.state.onClose) {
+      this.state.onClose();
+      this.setState({ onClose: null });
+    }
     this.setState({ open: false });
   };
 

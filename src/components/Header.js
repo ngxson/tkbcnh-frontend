@@ -35,7 +35,7 @@ class Header extends React.Component {
     var title = defaultTitle
     if (path.startsWith('/admin')) title = 'Admin'
 
-    const goToHome = () => window.location.href = '/'
+    const goToHome = () => history.push('/')
 
     return (
       <div style={styles.root}>
