@@ -13,7 +13,7 @@ class AlertDialog extends React.Component {
 
   show(data) {
     this.setState({
-      open: data.open,
+      open: true,
       title: data.title,
       text: data.text,
     })

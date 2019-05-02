@@ -7,7 +7,6 @@ import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button'
-import AlertDialog from '../components/AlertDialog'
 import Resizer from 'react-image-file-resizer'
 
 class Admin extends React.Component {
@@ -17,14 +16,9 @@ class Admin extends React.Component {
     this.state = {
       password: '',
       grade: '',
-      publishDate: 0,
-      dialog: {
-        open: false,
-        title: 'Có lỗi xảy ra',
-        text: ''
-      }
+      publishDate: '2019-01-01',
+      image: false
     }
-    this.dialog = React.createRef();
   }
 
   handleChange = name => event => {
@@ -32,8 +26,15 @@ class Admin extends React.Component {
   }
 
   doUpload() {
-    if (this.image === '' || this.state.grade === '' || this.state.publishDate === 0) {
-      return this.dialog.current.show({
+    if (!this.state.image) {
+      return this.props.dialog.current.show({
+        open: true,
+        title: 'Có lỗi xảy ra',
+        text: 'Bạn chưa chọn file để upload'
+      })
+    }
+    if (this.image === '' || this.state.grade === '' || this.state.publishDate === '2019-01-01') {
+      return this.props.dialog.current.show({
         open: true,
         title: 'Có lỗi xảy ra',
         text: 'Bạn chưa điền đầy đủ thông tin'
@@ -54,11 +55,11 @@ class Admin extends React.Component {
         fileInput = true
     }
     if (fileInput) {
-      let height = 860
-      let width = 1400
+      let height = Math.floor(860 * 1.5)
+      let width = Math.floor(1400 * 1.5)
       Resizer.imageFileResizer(
         event.target.files[0],
-        width, height, 'JPEG', 90, 0,
+        width, height, 'JPEG', 100, 0,
         uri => {
           uri = uri.replace(/data:image\/[a-z]+;base64,/, '')
           this.setState({image: uri})
@@ -86,6 +87,7 @@ class Admin extends React.Component {
         <TextField
           label="Password"
           type="password"
+          value={this.state.password}
           style={classes.input}
           onChange={this.handleChange('password')}
           margin="normal"
@@ -114,7 +116,7 @@ class Admin extends React.Component {
           label="Có hiệu lực từ ngày"
           type="date"
           style={classes.input}
-          defaultValue="2019-01-01"
+          defaultValue={this.state.publishDate}
           onChange={this.handleChange('publishDate')}
           InputLabelProps={{
             shrink: true,
@@ -133,7 +135,6 @@ class Admin extends React.Component {
         <Button variant="contained" color="primary" onClick={this.doUpload.bind(this)}>
           Tải lên
         </Button>
-        <AlertDialog ref={this.dialog} />
       </div>
     );
   }
