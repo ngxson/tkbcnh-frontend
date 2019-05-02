@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminLayout from './layouts/Admin';
+import HomeLayout from './layouts/Home';
 import './App.css';
 import Header from './components/Header';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -21,7 +22,7 @@ function App() {
 }
 
 function Home() {
-  return <h2>Home</h2>
+  return <HomeLayout />
 }
 
 function Admin() {
