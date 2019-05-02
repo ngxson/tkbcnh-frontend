@@ -39,7 +39,7 @@ class Header extends React.Component {
 
     return (
       <div style={styles.root}>
-        <AppBar position="static" color="inherit">
+        <AppBar position="static" color="primary">
           <Toolbar>
             <Typography variant="h6" color="inherit" style={styles.grow}>
               {title}
